@@ -1,6 +1,10 @@
- // Export a function named 'getDate' from the module
+// today.js
 module.exports.getDate = function getDate() {
-    // Get the current date and time in the timezone "Australia/Brisbane"
-    let aestTime = new Date().toLocaleString("en-US", {timeZone: "Australia/Brisbane"});
-    return aestTime; // Return the formatted date and time
+  // Obtener la fecha y hora actual en la zona horaria "America/ Bogota"
+  let aestTime = new Date().toLocaleString("en-US", {
+    timeZone: "America/Bogota",
+  });
+
+  // Convertir la cadena de fecha/hora en un nuevo objeto Date
+  return new Date(aestTime); // Devuelve un objeto Date
 };
