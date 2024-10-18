@@ -24,9 +24,10 @@ let users = [
 ];
 
 // GET request: Retrieve all users
+// Define a route handler for GET requests to the root path "/"
 router.get("/",(req,res)=>{
-  // Copy the code here
-  res.send(users);
+  // Send a JSON response containing the users array, formatted with an indentation of 4 spaces for readability
+  res.send(JSON.stringify({users}, null, 4));
 });
 
 // GET by specific ID request: Retrieve a single user with email ID
@@ -98,8 +99,11 @@ router.put("/:email", (req, res) => {
 
 // DELETE request: Delete a user by email ID
 router.delete("/:email", (req, res) => {
-  // Copy the code here
-  res.send("Yet to be implemented")//This line is to be replaced with actual return value
+  // Extract the email parameter from the request URL
+  const email = req.params.email;
+  // Filter the users array to exclude the user with the specified email
+  users = users.filter((user) => user.email != email);
+  // Send a success message as the response, indicating the user has been deleted
+  res.send(`User with the email ${email} deleted.`);
 });
-
 module.exports=router;
